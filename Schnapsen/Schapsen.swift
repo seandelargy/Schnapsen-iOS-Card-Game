@@ -10,16 +10,16 @@ import Foundation
 
 class Schnapsen {
     
-    var deck: [Card] = [Card]()
-    var playerOneCardsWon: [Card] = [Card]() // will use when implementing more advamced bot
-    var playerTwoCardsWon: [Card] = [Card]() // will use when implementing more advamced bot
-    var playerOneHand: [Card] = [Card]()
-    var playerTwoHand: [Card] = [Card]()
-    var trumpCard: Card = Card(suit: .heart, val: .ace) // initialized to arbitrary card -> figure out lazy initialization
-    var playerOnePoints = 0
-    var playerTwoPoints = 0
-    var gameOver = false
-    var playerOneOnLead = true
+    private(set) var deck: [Card] = [Card]()
+    private(set) var playerOneCardsWon: [Card] = [Card]() // will use when implementing more advamced bot
+    private(set) var playerTwoCardsWon: [Card] = [Card]() // will use when implementing more advamced bot
+    private(set) var playerOneHand: [Card] = [Card]()
+    private(set) var playerTwoHand: [Card] = [Card]()
+    private(set) var trumpCard: Card = Card(suit: .heart, val: .ace)  // initialized to arbitrary card -> lazy initialization?
+    private(set) var playerOnePoints = 0
+    private(set) var playerTwoPoints = 0
+    private(set) var gameOver = false
+    private(set) var playerOneOnLead = true
     
     init() {
         for suit in Card.Suit.allCases {
@@ -31,25 +31,20 @@ class Schnapsen {
         dealCards()
     }
     
-    // this method unneccessary
-    func drawCard() -> Card {
-        return deck.remove(at: 0)
-    }
-    
     // deals traditional schnapsen way, 3, 3, trump card, 2, 2
-    func dealCards() {
+    private func dealCards() {
         for _ in 1...3 {
-            playerOneHand.append(drawCard())
+            playerOneHand.append(deck.remove(at: 0))
         }
         for _ in 1...3 {
-            playerTwoHand.append(drawCard())
+            playerTwoHand.append(deck.remove(at: 0))
         }
-        trumpCard = drawCard()
+        trumpCard = deck.remove(at: 0)
         for _ in 1...2 {
-            playerOneHand.append(drawCard())
+            playerOneHand.append(deck.remove(at: 0))
         }
         for _ in 1...2 {
-            playerTwoHand.append(drawCard())
+            playerTwoHand.append(deck.remove(at: 0))
         }
     }
     
@@ -67,10 +62,27 @@ class Schnapsen {
     }
     
     
-    func playCards(_ playerOneCard: Card, _ playerTwoCard: Card) {
+    // SideEffect: remove playerOnceCard and playerTwoCard from their respective hands
+    private func removeCards(_ playerOneCard: Card, _ playerTwoCard: Card) {
+        var index = findIndexOfCard(playerOneHand, playerOneCard)
+        print(index)
+        playerOneHand.remove(at: index)
+        index = findIndexOfCard(playerTwoHand, playerTwoCard)
+        playerTwoHand.remove(at: index)
+    }
     
-        // TODO: remove cards from hand here, not in view
-        
+    func findIndexOfCard(_ playerHand: [Card], _ card:Card) -> Int {
+        for cardIndex in 0..<playerHand.count {
+            if card == playerHand[cardIndex] {
+                return cardIndex
+            }
+        }
+        return -1;
+    }
+    
+    // plays cards and updates hands and game points
+    func playCards(_ playerOneCard: Card, _ playerTwoCard: Card) {
+        removeCards(playerOneCard, playerTwoCard)
         let winner = getTrickWinner(playerOneCard, playerTwoCard)
       
         if winner < 0 {
@@ -82,12 +94,22 @@ class Schnapsen {
             playerTwoCardsWon += [playerOneCard, playerTwoCard]
             playerOneOnLead = false
         }
-        
+        drawCards(winner)
+
+        // check if game is over
+        if playerOnePoints >= 66 || playerTwoPoints >= 66 {
+            gameOver = true
+        }
+    }
+    
+    // SideEffect: adds cards from deck to player hands if stock still open
+    private func drawCards(_ winner: Int) {
+        // stock is still open
         if deck.count > 0 {
-            let card1 = drawCard()
-            var card2: Card? = nil
+            let card1 = deck.remove(at: 0)
+            var card2: Card?
             if deck.count > 0 {
-                card2 = drawCard()
+                card2 = deck.remove(at: 0)
             } else {
                 card2 = trumpCard
             }
@@ -99,28 +121,26 @@ class Schnapsen {
                 playerOneHand += [card2!]
             }
         }
-        
-        if playerOnePoints >= 66 || playerTwoPoints >= 66 {
-            gameOver = true
-        }
     }
     
-    // computer picks card to lead hand with
+    
+    // Return's computer move on lead
     func getComputerLeadMove() -> Card {
-        return playerTwoHand.remove(at: 0)
+        return playerTwoHand[0]
     }
     
-    // returns first card in hand that beats opponent's move, or first card if no card in hand beats opponent
+    // Returns computer's move
     func getComputerMove(_ playerOneMove: Card) -> Card{
+        // returns first card in hand that beats opponent's move, or first card in hand if no card beats opponent
         for cardIndex in 0..<playerTwoHand.count {
             if getTrickWinner(playerOneMove, playerTwoHand[cardIndex]) > 1 {
-                return playerTwoHand.remove(at: cardIndex)
+                return playerTwoHand[cardIndex]
             }
         }
-        return playerTwoHand.remove(at: 0)
+        return playerTwoHand[0]
     }
     
-    // returns negative number if player one wins, positive number if player two wins
+    // Returns negative integer if player one wins, positive number if player two wins
     func getTrickWinner(_ playerOneCard: Card, _ playerTwoCard: Card) -> Int {
         if (playerOneCard.suit == playerTwoCard.suit) {
             return playerTwoCard.val.rawValue - playerOneCard.val.rawValue // negative val for player one win, positve for player two

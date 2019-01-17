@@ -16,25 +16,24 @@ class ViewController: UIViewController {
         promptNextMove()
     }
     
-    @IBOutlet var cardButtons: [UIButton]!
+    @IBOutlet private var cardButtons: [UIButton]!
     
-    @IBOutlet weak var playerOneScore: UILabel!
+    @IBOutlet private weak var playerOneScore: UILabel!
     
-    @IBOutlet weak var playerTwoScore: UILabel!
+    @IBOutlet private weak var playerTwoScore: UILabel!
 
-    @IBOutlet weak var trumpCard: UILabel!
+    @IBOutlet private weak var trumpCard: UILabel!
     
-    @IBOutlet weak var gameStatus: UILabel!
+    @IBOutlet private weak var gameStatus: UILabel!
     
-    @IBOutlet weak var pastHand: UILabel!
+    @IBOutlet private weak var pastHand: UILabel!
     
-    var game = Schnapsen()
+    private var game = Schnapsen()
     
-    var computerMove: Card!
+    private var computerMove: Card!
     
-    func updateDisplay() {
+    private func updateDisplay() {
         let handCount = game.playerOneHand.count - 1
-        print(handCount)
         
         for cardIndex in 0...4 {
             let button = cardButtons[cardIndex]
@@ -61,7 +60,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func promptNextMove() {
+    private func promptNextMove() {
         if !game.gameOver {
             if !game.playerOneOnLead {
                 computerMove = game.getComputerLeadMove() // computer picks card to lead with
@@ -73,7 +72,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func displayLastMove(_ card1: Card, _ card2: Card) {
+    private func displayLastMove(_ card1: Card, _ card2: Card) {
         var message = "Past hand: You played \(card1.toString()). Computer Played \(card2.toString()). "
         if game.playerOneOnLead {
             message += "You won that hand."
@@ -86,16 +85,14 @@ class ViewController: UIViewController {
     @IBAction func playCard(_ sender: UIButton) {
         let indexOfCard = cardButtons.index(of: sender)!
         if !game.gameOver && indexOfCard <= game.playerOneHand.count - 1 {
-            let card1 = game.playerOneHand[cardButtons.index(of: sender)!]
-            // TODO: remove card from hand in model, not view
-            game.playerOneHand.remove(at: cardButtons.index(of: sender)!) // remove in model
+            let playerOneCard = game.playerOneHand[cardButtons.index(of: sender)!]
             if computerMove != nil { // computer is on lead
-                game.playCards(card1, computerMove!)
+                game.playCards(playerOneCard, computerMove!)
             } else { // computer needs to respond to move
-                computerMove = game.getComputerMove(card1)
-                game.playCards(card1, computerMove!)
+                computerMove = game.getComputerMove(playerOneCard)
+                game.playCards(playerOneCard, computerMove!)
             }
-            displayLastMove(card1, computerMove)
+            displayLastMove(playerOneCard, computerMove)
             updateDisplay()
             promptNextMove()
         }
