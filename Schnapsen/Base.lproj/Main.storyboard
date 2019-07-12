@@ -1,33 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kmP-vR-B1Q">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Schanpsen Menu View Controller-->
+        <scene sceneID="YHk-Zp-OwK">
+            <objects>
+                <viewController id="0gN-Bn-Lu6" customClass="SchanpsenMenuViewController" customModule="Schnapsen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ht6-sv-jBh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="E6i-ld-b0O">
+                                <rect key="frame" x="247" y="225" width="106" height="150"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x0w-M3-u93">
+                                        <rect key="frame" x="18.5" y="0.0" width="69" height="30"/>
+                                        <state key="normal" title="Computer"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="Computer Game" id="gbJ-zz-Oyp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4e-1C-5GK">
+                                        <rect key="frame" x="31.5" y="60" width="43" height="30"/>
+                                        <state key="normal" title="Player"/>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="Player Game" id="O6w-yG-ykn"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2X-ZD-14d">
+                                        <rect key="frame" x="0.0" y="120" width="106" height="30"/>
+                                        <state key="normal" title="Find Best Move"/>
+                                        <connections>
+                                            <segue destination="RTy-Ug-JFU" kind="show" identifier="Best Move" id="5BC-y4-6v5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="E6i-ld-b0O" firstAttribute="centerX" secondItem="Ht6-sv-jBh" secondAttribute="centerX" id="Nls-4K-Vck"/>
+                            <constraint firstItem="E6i-ld-b0O" firstAttribute="centerY" secondItem="Ht6-sv-jBh" secondAttribute="centerY" id="wme-1G-Yl7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="96F-8R-8w7"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="sPr-4V-6GQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Okd-oi-azL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="112.8" y="111.99400299850076"/>
+        </scene>
+        <!--Game View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Schnapsen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GameViewController" customModule="Schnapsen" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ezj-qB-wNc">
-                                <rect key="frame" x="56.5" y="475" width="262" height="30"/>
+                                <rect key="frame" x="169" y="408" width="262" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3l-te-rKo">
                                         <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="playCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0kA-Ge-D2j"/>
+                                            <action selector="playPlayerOneCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0kA-Ge-D2j"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XUs-JK-Q3g">
@@ -35,7 +79,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="playCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hrh-Fn-RPE"/>
+                                            <action selector="playPlayerOneCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hrh-Fn-RPE"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="625-x0-pfl">
@@ -43,7 +87,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="playCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="07o-43-oiY"/>
+                                            <action selector="playPlayerOneCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="07o-43-oiY"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcm-18-wp4">
@@ -51,7 +95,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="playCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tOH-oR-xyZ"/>
+                                            <action selector="playPlayerOneCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tOH-oR-xyZ"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdi-3i-Db4">
@@ -59,28 +103,28 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
-                                            <action selector="playCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pYI-Zf-xsX"/>
+                                            <action selector="playPlayerOneCard:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pYI-Zf-xsX"/>
                                         </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aSM-Os-9g5">
-                                <rect key="frame" x="0.0" y="32" width="375" height="77.5"/>
+                                <rect key="frame" x="0.0" y="56" width="600" height="77.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player One Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PWh-TQ-FM8">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player Two Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fy5-Lb-vIG">
-                                        <rect key="frame" x="0.0" y="28.5" width="375" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="28.5" width="600" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trump Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMH-mW-QST">
-                                        <rect key="frame" x="0.0" y="57" width="375" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="57" width="600" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -130,7 +174,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136.80000000000001" y="104.7976011994003"/>
+            <point key="canvasLocation" x="1076" y="104.7976011994003"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="e6T-lV-hM6">
+            <objects>
+                <viewController id="RTy-Ug-JFU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mxT-Ks-iF2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="RfO-uY-dKY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rLN-2b-HbJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="76" y="935"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7An-Br-Bln">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kmP-vR-B1Q" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ubs-gr-wfZ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0gN-Bn-Lu6" kind="relationship" relationship="rootViewController" id="utp-eK-Taj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="naP-bA-mrg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-826.39999999999998" y="111.99400299850076"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="O6w-yG-ykn"/>
+    </inferredMetricsTieBreakers>
 </document>
