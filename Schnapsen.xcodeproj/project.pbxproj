@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5FB32A6522FF421A0047D6D9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB32A6422FF421A0047D6D9 /* Player.swift */; };
+		5FB32A6923008CFB0047D6D9 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FB32A6823008CFB0047D6D9 /* Deck.swift */; };
+		5FE75959224ADD8600FBF68A /* SchanpsenMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FE75958224ADD8600FBF68A /* SchanpsenMenuViewController.swift */; };
 		5FF34A9021E982A200DA19C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF34A8F21E982A200DA19C8 /* AppDelegate.swift */; };
-		5FF34A9221E982A200DA19C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF34A9121E982A200DA19C8 /* ViewController.swift */; };
+		5FF34A9221E982A200DA19C8 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF34A9121E982A200DA19C8 /* GameViewController.swift */; };
 		5FF34A9521E982A200DA19C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FF34A9321E982A200DA19C8 /* Main.storyboard */; };
 		5FF34A9721E982A300DA19C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5FF34A9621E982A300DA19C8 /* Assets.xcassets */; };
 		5FF34A9A21E982A300DA19C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FF34A9821E982A300DA19C8 /* LaunchScreen.storyboard */; };
@@ -36,9 +39,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5FB32A6422FF421A0047D6D9 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		5FB32A6823008CFB0047D6D9 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		5FE75958224ADD8600FBF68A /* SchanpsenMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchanpsenMenuViewController.swift; sourceTree = "<group>"; };
 		5FF34A8C21E982A200DA19C8 /* Schnapsen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Schnapsen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FF34A8F21E982A200DA19C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5FF34A9121E982A200DA19C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5FF34A9121E982A200DA19C8 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		5FF34A9421E982A200DA19C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5FF34A9621E982A300DA19C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5FF34A9921E982A300DA19C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,6 +84,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5FB32A6B23088BEA0047D6D9 /* GameLogic */ = {
+			isa = PBXGroup;
+			children = (
+				5FB32A6422FF421A0047D6D9 /* Player.swift */,
+				5FF34ABE21E984D300DA19C8 /* Schapsen.swift */,
+				5FB32A6823008CFB0047D6D9 /* Deck.swift */,
+				5FF34AC021E985F200DA19C8 /* Card.swift */,
+			);
+			path = GameLogic;
+			sourceTree = "<group>";
+		};
+		5FB32A6C23088C300047D6D9 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5FE75958224ADD8600FBF68A /* SchanpsenMenuViewController.swift */,
+				5FF34A9121E982A200DA19C8 /* GameViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		5FF34A8321E982A100DA19C8 = {
 			isa = PBXGroup;
 			children = (
@@ -101,13 +127,12 @@
 		5FF34A8E21E982A200DA19C8 /* Schnapsen */ = {
 			isa = PBXGroup;
 			children = (
-				5FF34A9121E982A200DA19C8 /* ViewController.swift */,
-				5FF34A9621E982A300DA19C8 /* Assets.xcassets */,
+				5FB32A6C23088C300047D6D9 /* ViewControllers */,
+				5FB32A6B23088BEA0047D6D9 /* GameLogic */,
 				5FF34ABD21E982B700DA19C8 /* Supporting Files */,
 				5FF34A9B21E982A300DA19C8 /* Info.plist */,
+				5FF34A9621E982A300DA19C8 /* Assets.xcassets */,
 				5FF34A9321E982A200DA19C8 /* Main.storyboard */,
-				5FF34ABE21E984D300DA19C8 /* Schapsen.swift */,
-				5FF34AC021E985F200DA19C8 /* Card.swift */,
 			);
 			path = Schnapsen;
 			sourceTree = "<group>";
@@ -270,9 +295,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FB32A6923008CFB0047D6D9 /* Deck.swift in Sources */,
 				5FF34ABF21E984D300DA19C8 /* Schapsen.swift in Sources */,
-				5FF34A9221E982A200DA19C8 /* ViewController.swift in Sources */,
+				5FF34A9221E982A200DA19C8 /* GameViewController.swift in Sources */,
 				5FF34A9021E982A200DA19C8 /* AppDelegate.swift in Sources */,
+				5FE75959224ADD8600FBF68A /* SchanpsenMenuViewController.swift in Sources */,
+				5FB32A6522FF421A0047D6D9 /* Player.swift in Sources */,
 				5FF34AC121E985F200DA19C8 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
